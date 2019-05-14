@@ -1,0 +1,61 @@
+{
+  "name": "ProductivityApp",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start",
+    "test": "jest"
+  },
+  "dependencies": {
+    "prettier": "^1.17.1",
+    "react": "16.8.3",
+    "react-native": "0.59.8",
+    "react-native-vector-icons": "^6.4.2",
+    "react-navigation": "^3.9.1",
+    "styled-components": "^4.2.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.4",
+    "@babel/runtime": "^7.4.4",
+    "@types/jest": "^24.0.13",
+    "@types/react": "^16.8.17",
+    "@types/react-native": "^0.57.56",
+    "@types/react-test-renderer": "^16.8.1",
+    "babel-eslint": "^8.0.3",
+    "babel-jest": "^24.8.0",
+    "eslint": "^4.13.0",
+    "eslint-config-airbnb-base": "7.1.0",
+    "eslint-config-prettier": "^4.0.0",
+    "eslint-plugin-babel": "^3.3.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jest": "^22.3.0",
+    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-react": "^7.5.1",
+    "eslint-plugin-react-native": "^3.2.0",
+    "husky": "^0.14.3",
+    "jest": "^24.8.0",
+    "lint-staged": "^7.2.0",
+    "metro-react-native-babel-preset": "^0.54.1",
+    "react-native-typescript-transformer": "^1.2.12",
+    "react-test-renderer": "16.8.3",
+    "typescript": "^3.4.5"
+  },
+  "jest": {
+    "preset": "react-native",
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js"
+    ],
+    "transform": {
+      "^.+\\.(js)$": "<rootDir>/node_modules/babel-jest",
+      "\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": [
+      "\\.snap$",
+      "<rootDir>/node_modules/"
+    ],
+    "cacheDirectory": ".jest/cache"
+  }
+}
