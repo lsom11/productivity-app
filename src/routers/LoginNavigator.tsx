@@ -1,6 +1,6 @@
 import { createStackNavigator } from 'react-navigation';
 import { Animated, Easing } from 'react-native';
-import Login from '../screens/Login
+import Login from '../screens/login/Login';
 
 const loginNavigator = (initialRouteName: string = 'Login') => {
   return createStackNavigator(

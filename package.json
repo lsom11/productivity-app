@@ -4,12 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node node_modules/react-native/local-cli/cli.js start",
+    "android": "react-native run-android",
+    "android:bundle": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
+    "ios": "cd ios && pod install && cd .. && react-native run-ios --simulator='iPhone 6s'",
     "test": "jest"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.4.0",
+    "@react-native-community/netinfo": "^2.0.10",
+    "moment": "^2.24.0",
     "prettier": "^1.17.1",
     "react": "16.8.3",
     "react-native": "0.59.8",
+    "react-native-device-info": "^1.6.2",
+    "react-native-fast-image": "^6.0.0",
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1",
     "react-navigation-material-bottom-tabs": "^1.0.0",
