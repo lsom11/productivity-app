@@ -1,13 +1,17 @@
 import { createStackNavigator } from 'react-navigation';
 import { Animated, Easing } from 'react-native';
 import Login from '../screens/login/Login';
+import Register from '../screens/login/Register';
+import ForgotPass from '../screens/login/ForgotPassword';
 
 const loginNavigator = createStackNavigator(
   {
     Login: { screen: Login },
+    Register: { screen: Register },
+    ForgotPass: { screen: ForgotPass },
   },
   {
-    initialRouteName: 'Login',
+    initialRouteName: 'ForgotPass',
     headerMode: 'none',
 
     transitionConfig: () => ({

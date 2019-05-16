@@ -1,5 +1,7 @@
 import React, { PureComponent, createContext } from 'react';
 import DeviceInfo from 'react-native-device-info';
+import englishText from '../config/english.json';
+import portugueseText from '../config/portuguese.json';
 
 import { getConfiguration } from '../fetch/config';
 
@@ -13,6 +15,10 @@ export interface State {
   email: string;
   features: {};
   appText: {};
+  theme: {
+    primaryColor: string,
+    secondaryColor: string
+  };
 }
 
 class SessionProvider extends PureComponent<State> {
@@ -23,12 +29,22 @@ class SessionProvider extends PureComponent<State> {
     email: '',
     features: {},
     appText: {},
+    theme: {
+      primaryColor: '#000';
+      secondaryColor: '#EB0F68';
+    };
+  };
+
+  getDeviceLanguage = async () => {
+    const deviceLocale = await DeviceInfo.getDeviceLocale();
+    let appText;
+    if (deviceLocale == 'en' || 'en-US') appText = englishText;
+    else appText = portugueseText;
+    this.setState({ appText }, () => console.log(appText));
   };
 
   async componentDidMount() {
-    const deviceLocale = await DeviceInfo.getDeviceLocale();
-    const appText = await getConfiguration(deviceLocale);
-    this.setState({ appText });
+    await this.getDeviceLanguage();
   }
 
   render() {

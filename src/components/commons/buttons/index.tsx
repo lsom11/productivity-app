@@ -13,7 +13,6 @@ const Container = styled.TouchableOpacity`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 20;
   margin-top: ${props => props.marginTop || 0};
   border: ${props =>
     props.borderColor ? `1px solid ${props.borderColor}` : 'transparent'};

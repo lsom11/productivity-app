@@ -49,8 +49,8 @@ const TextView = styled.View`
 `;
 
 const Text = styled.Text`
-  color: ${props => props.color};
-  font-size: ${props => props.fontSize};
+  color: ${props => props.color || '#000'};
+  font-size: ${props => props.fontSize || '13px'};
   text-decoration: ${props => (props.underline ? 'underline' : 'none')};
   text-decoration-color: ${props =>
     props.underlineColor ? props.underlineColor : 'transparent'};

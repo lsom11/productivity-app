@@ -1,0 +1,14 @@
+{
+  "passwordInput": "Password",
+  "usernameInput": "Email or Username",
+  "submitText": "Submit",
+  "forgotPassText": "Forgot your Password?",
+  "forgotPassParagraph": "Enter your email and we will send you an email with instructions on how to reset it.",
+  "cancelText": "Cancel",
+  "backText": "Go Back",
+  "emailRegisterInput": "Email",
+  "usernameRegisterInput": "Username",
+  "notRegisteredText": "Not registered?",
+  "alreadyRegisteredText": "Already registered?",
+  "enterHereText": "Click here!"
+}

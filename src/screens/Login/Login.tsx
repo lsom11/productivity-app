@@ -29,12 +29,15 @@ const Login = (props: Props) => {
   const { goBack, navigate } = navigation;
   const { sessionContext } = props;
   const {
+    theme: { primaryColor, secondaryColor },
     appText: {
       cancelText,
       forgotPassText,
       passwordInput,
       submitText,
       usernameInput,
+      notRegisteredText,
+      enterHereText,
     },
   } = sessionContext;
 
@@ -53,6 +56,8 @@ const Login = (props: Props) => {
       <LoginHeader
         backText={cancelText}
         title="Login"
+        color={primaryColor}
+        navColor={secondaryColor}
         // navigation={() => navigate('Onboarding')}
         style={{ marginBottom: 20 }}
       />
@@ -85,11 +90,20 @@ const Login = (props: Props) => {
         <SubmitButton submit={submitForm} title={submitText} />
 
         <TextContainer>
-          <TouchableOpacity onPress={() => navigate('ForgotPass')}>
-            <Text color="#EB0F68" fontSize={13}>
-              {forgotPassText}
+          <Text>
+            {notRegisteredText}{' '}
+            <Text
+              color={secondaryColor}
+              fontSize={'13px'}
+              onPress={() => navigate('Register')}
+            >
+              {enterHereText}
             </Text>
-          </TouchableOpacity>
+          </Text>
+
+          <Text color={secondaryColor} fontSize={'13px'}>
+            {forgotPassText}
+          </Text>
         </TextContainer>
       </ContentContainer>
     </ContainerScroll>

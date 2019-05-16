@@ -1,0 +1,14 @@
+{
+  "passwordInput": "Senha",
+  "usernameInput": "E-mail ou Usúario",
+  "submitText": "Enviar",
+  "forgotPassText": "Esqueci a senha",
+  "forgotPassParagraph": "Insira seu e-mail cadastrado e nós enviaremos as instruções para você redefinir sua senha. =)",
+  "cancelText": "Cancelar",
+  "backText": "Voltar",
+  "emailRegisterInput": "E-mail",
+  "usernameRegisterInput": "Usúario",
+  "notRegisteredText": "Não tem conta?",
+  "alreadyRegisteredText": "Já tem conta?",
+  "enterHereText": "Clique aqui!"
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import { Platform } from 'react-native';
+import { Platform, View } from 'react-native';
 import { Image } from '../../components/commons/images';
 import { LoginHeader } from '../../components/commons/headers';
 import { Button as SubmitButton } from '../../components/commons/buttons';
@@ -14,12 +14,26 @@ import {
   TextView,
   ImageContainer,
 } from './styles';
-import { Input } from '../../../components/commons/inputs';
+import { Input } from '../../components/commons/inputs';
 
-import checkInternetConnection from '../../../utils/checkInternet';
+import checkInternetConnection from '../../utils/checkInternet';
+import { SessionContext } from '../../context/sessionContext';
 
 const Props = {};
 const ForgotPass = (props: Props) => {
+  const session = useContext(SessionContext);
+  const {
+    theme: { primaryColor, secondaryColor },
+    appText: {
+      backText,
+      forgotPassText,
+      forgotPassParagraph,
+      emailRegisterInput,
+      notRegisteredText,
+      enterHereText,
+      submitText,
+    },
+  } = session;
   const { navigation } = props;
   const { goBack, navigate, state } = navigation;
   const [email, setEmail] = useState('');
@@ -33,12 +47,6 @@ const ForgotPass = (props: Props) => {
     console.log('nav');
   };
 
-  // const handleResetAlert = () => {
-  //   setResetAlert(false);
-  //   if (error) setEmail('');
-  //   if (!error) navigation.navigate('SignIn');
-  // };
-
   return (
     <Container
       style={{
@@ -46,22 +54,23 @@ const ForgotPass = (props: Props) => {
       }}
     >
       <LoginHeader
-        backText="Voltar"
+        backText={backText}
         showArrow={true}
+        color={primaryColor}
+        navColor={secondaryColor}
         title="Login"
-        navigation={() => handleNav()}
+        navigation={() => goBack()}
       />
       <ContentContainer>
         <LogoContainer>
-          <ImageContainer />
+          {/* <ImageContainer /> */}
           <TextContainer>
-            <Text color="#000" fontSize={20} style={{ marginBottom: 15 }}>
-              Esqueceu a senha?
+            <Text color={primaryColor} fontSize={20}>
+              {forgotPassText}
             </Text>
             <TextView>
               <Text color="#666666" fontSize={13} lineHeight="18px">
-                Insira seu e-mail cadastrado e nós enviaremos as instruções para
-                você redefinir sua senha. =)
+                {forgotPassParagraph}
               </Text>
             </TextView>
           </TextContainer>
@@ -70,24 +79,25 @@ const ForgotPass = (props: Props) => {
         <InputContainer>
           <Input
             onChangeText={text => setEmail(text)}
-            placeholder="E-mail"
+            placeholder={emailRegisterInput}
             style={{ paddingLeft: 20 }}
             keyboardType="email-address"
             value={email}
             spellCheck={false}
             autoCorrect={false}
           />
-          <SubmitButton submit={submitForm} title="Enviar" />
-
+          <SubmitButton submit={submitForm} title={submitText} />
+          <View style={{ marginTop: 15 }} />
           <Text color="#666666" fontSize={13}>
-            Não tem uma conta?{' '}
+            {notRegisteredText}{' '}
             <Text
-              color="#EB0F68"
+              color={secondaryColor}
               fontSize={13}
               underline
-              underlineColor="#EB0F68"
+              underlineColor={secondaryColor}
+              onPress={() => navigate('Register')}
             >
-              Crie aqui
+              {enterHereText}
             </Text>
           </Text>
         </InputContainer>

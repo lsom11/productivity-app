@@ -20,7 +20,14 @@ const TitleContainer = styled.View`
   width: 100%;
 `;
 
-const LoginHeader = ({ title, backText, navigation, showArrow = false }) => {
+const LoginHeader = ({
+  title,
+  backText,
+  navigation,
+  showArrow = false,
+  color,
+  navColor,
+}) => {
   return (
     <HeaderContainer>
       <NavContainer onPress={() => console.log('nav')}>
@@ -28,7 +35,7 @@ const LoginHeader = ({ title, backText, navigation, showArrow = false }) => {
           <Icon
             name="ios-arrow-back"
             size={18}
-            color="#EB0F68"
+            color={navColor}
             style={{ marginRight: 10 }}
           />
         )}
