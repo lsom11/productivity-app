@@ -20,7 +20,6 @@ const Container = styled.TouchableOpacity`
 `;
 
 const Text = styled.Text`
-  font-family: 'Gotham-Black';
   font-size: 16px;
   color: ${props => (props.textColor ? props.textColor : '#fff')};
   ${Platform.select({
@@ -81,4 +80,4 @@ const Button = ({
   );
 };
 
-export { Button } // eslint-disable-line
+export { Button }; // eslint-disable-line

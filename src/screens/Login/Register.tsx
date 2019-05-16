@@ -14,10 +14,10 @@ import {
   TextContainer,
   Text,
   TextView,
-} from './styles.js';
-import { Image } from '../../../components/commons/images';
-import { TitleWithLine } from '../../../components/commons/text';
-import { LoginHeader } from '../../../components/commons/headers';
+} from './styles';
+import { Image } from '../../components/commons/images';
+import { TitleWithLine } from '../../components/commons/text';
+import { LoginHeader } from '../../components/commons/headers';
 
 const Props = {};
 const Register = (props: Props) => {

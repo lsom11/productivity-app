@@ -34,12 +34,7 @@ const HeaderContainer = styled.View`
 
 const MainHeader = ({ title = 'Main', navigation }) => {
   return (
-    <HeaderContainer
-      style={{
-        marginTop: Platform.OS === 'android' ? 10 : 0,
-        paddingBottom: Platform.OS === 'android' ? 10 : 0,
-      }}
-    >
+    <HeaderContainer>
       {/* <DrawerContainer>
         {session.isLoggedIn ? (
           <Icon

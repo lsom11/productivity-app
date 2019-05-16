@@ -33,6 +33,9 @@ target 'ProductivityApp' do
   pod 'RNCAsyncStorage', :path => '../node_modules/@react-native-community/async-storage'
   pod 'react-native-fast-image', :path => '../node_modules/react-native-fast-image'
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   post_install do |installer|
     installer.pods_project.targets.each do |target|
       # The following is needed to ensure the "archive" step works in XCode.

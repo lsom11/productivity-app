@@ -3,8 +3,8 @@ import { Platform, TouchableOpacity, Linking, AppState } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-import { Input, PasswordInput } from '../../../components/commons/inputs';
-import { Button as SubmitButton } from '../../../components/commons/buttons';
+import { Input, PasswordInput } from '../../components/commons/inputs';
+import { Button as SubmitButton } from '../../components/commons/buttons/index';
 
 import {
   ContainerScroll,
@@ -14,10 +14,10 @@ import {
   TextContainer,
   Text,
   TextView,
-} from './styles.js';
-import { Image } from '../../../components/commons/images';
-import { TitleWithLine } from '../../../components/commons/text';
-import { LoginHeader } from '../../../components/commons/headers';
+} from './styles';
+import { Image } from '../../components/commons/images';
+import { TitleWithLine } from '../../components/commons/text';
+import { LoginHeader } from '../../components/commons/headers';
 
 const Props = {};
 const Login = (props: Props) => {

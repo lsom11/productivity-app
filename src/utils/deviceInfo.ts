@@ -2,8 +2,21 @@ import { Platform } from 'react-native';
 import DeviceInfo from 'react-native-device-info';
 import queryString from 'query-string';
 
+interface DeviceInfo {
+  app_id: string;
+  os_version: string;
+  device_type: string;
+}
+interface DeviceInfoExtended {
+  app_id: string;
+  os_version: string;
+  device_type: string;
+  device_id: string;
+  device_name: string;
+}
+
 const getDeviceUrlParams = () => {
-  let device;
+  let device: DeviceInfo;
   if (Platform.OS === 'ios') {
     device = DeviceInfo.isTablet() ? 'ipad' : 'iphone';
   } else {

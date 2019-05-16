@@ -1,6 +1,5 @@
 import styled, { css } from 'styled-components';
 import { Platform, Dimensions } from 'react-native';
-import returnDimensionSpecificStyle from '../../../helpers/platform';
 
 const Container = styled.SafeAreaView`
   padding: 0 2.5%;
@@ -15,22 +14,11 @@ const ContainerScroll = styled.ScrollView`
 `;
 const ContentContainer = styled.View`
   margin-top: 10%;
-  height: ${props =>
-    returnDimensionSpecificStyle(
-      '100%',
-      '100%',
-      Dimensions.get('window').height - 170
-    )};
+  height: 100%;
   width: 100%;
   padding: ${props => (props.noPadding ? '0 0' : '0 10%')};
   background-color: ${props =>
     props.background ? props.background : 'transparent'};
-  ${props =>
-    returnDimensionSpecificStyle(false, false, true) &&
-    `
-    padding-left: 25%;
-    padding-right: 25%;
-  `};
 `;
 
 const LogoContainer = styled.View`
@@ -63,7 +51,6 @@ const TextView = styled.View`
 const Text = styled.Text`
   color: ${props => props.color};
   font-size: ${props => props.fontSize};
-  font-family: ${props => props.fontFamily || 'Gotham-Bold'};
   text-decoration: ${props => (props.underline ? 'underline' : 'none')};
   text-decoration-color: ${props =>
     props.underlineColor ? props.underlineColor : 'transparent'};

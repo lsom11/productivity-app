@@ -7,7 +7,7 @@ const createRootNavigator = (initialRouteName: string = 'LoginNavigator') => {
   return createSwitchNavigator(
     {
       LoginNavigator: { screen: LoginNavigator },
-      Main: { screen: MainNavigator },
+      MainNavigator: { screen: MainNavigator },
     },
     {
       initialRouteName,

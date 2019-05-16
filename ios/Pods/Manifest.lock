@@ -70,6 +70,8 @@ PODS:
     - React
   - RNDeviceInfo (1.6.2):
     - React
+  - RNGestureHandler (1.2.1):
+    - React
   - SDWebImage (5.0.1):
     - SDWebImage/Core (= 5.0.1)
   - SDWebImage/Core (5.0.1)
@@ -96,6 +98,7 @@ DEPENDENCIES:
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-community/async-storage`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga/yoga.podspec`)
 
 SPEC REPOS:
@@ -120,6 +123,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/async-storage"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga/yoga.podspec"
 
@@ -133,9 +138,10 @@ SPEC CHECKSUMS:
   react-native-netinfo: 39c221d058dca040a69e46a083e692bbd65d5ab5
   RNCAsyncStorage: 0c3ef98facf3fecf455b518d6f52e10fc964c523
   RNDeviceInfo: 367e1d3b3bbebb68f2bbabb3d93e6c8b851ec87d
+  RNGestureHandler: aea90f0ad8e35fec23438db6fc3ad79be58bb734
   SDWebImage: 27dd2c9ea07a2252f94557c9fbb6105ee94b74c9
   yoga: 92b2102c3d373d1a790db4ab761d2b0ffc634f64
 
-PODFILE CHECKSUM: ca3b8c8bea83555f05a31286d95f47eca43c865a
+PODFILE CHECKSUM: 03e14f0537b9ca4cd0dbc444fe4eab0353439c83
 
 COCOAPODS: 1.6.1

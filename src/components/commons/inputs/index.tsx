@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 import PasswordInput from './passwordInput';
-import NumberInput from './phoneInputs';
 
 const Input = styled.TextInput`
   height: 50px;
@@ -15,4 +14,4 @@ const Input = styled.TextInput`
   font-weight: 700;
 `;
 
-export { Input, PasswordInput, NumberInput } // eslint-disable-line
+export { Input, PasswordInput };

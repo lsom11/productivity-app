@@ -1,8 +1,8 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { Platform } from 'react-native';
-import { Image } from '../../../components/commons/images';
-import { LoginHeader } from '../../../components/commons/headers';
-import { Button as SubmitButton } from '../../../components/commons/buttons';
+import { Image } from '../../components/commons/images';
+import { LoginHeader } from '../../components/commons/headers';
+import { Button as SubmitButton } from '../../components/commons/buttons';
 
 import {
   Container,
