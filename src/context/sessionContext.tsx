@@ -12,6 +12,7 @@ export interface State {
   lastName: string;
   email: string;
   features: {};
+  appText: {};
 }
 
 class SessionProvider extends PureComponent<State> {
@@ -21,11 +22,13 @@ class SessionProvider extends PureComponent<State> {
     lastName: '',
     email: '',
     features: {},
+    appText: {},
   };
 
   async componentDidMount() {
     const deviceLocale = await DeviceInfo.getDeviceLocale();
-    const settings = await getConfiguration(deviceLocale);
+    const appText = await getConfiguration(deviceLocale);
+    this.setState({ appText });
   }
 
   render() {

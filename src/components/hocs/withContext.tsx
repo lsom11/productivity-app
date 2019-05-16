@@ -1,8 +1,8 @@
 import React from 'react';
 import {
-  SessionConsumer,
+  Consumer as SessionConsumer,
   State as SessionState,
-} from '../../../context/sessionContext';
+} from '../../context/sessionContext';
 
 const withContext = Comp => {
   return props => (

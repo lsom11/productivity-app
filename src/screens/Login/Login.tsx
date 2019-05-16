@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import { Platform, TouchableOpacity, Linking, AppState } from 'react-native';
 
 import Icon from 'react-native-vector-icons/FontAwesome';
-
 import { Input, PasswordInput } from '../../components/commons/inputs';
 import { Button as SubmitButton } from '../../components/commons/buttons/index';
 
@@ -18,6 +17,7 @@ import {
 import { Image } from '../../components/commons/images';
 import { TitleWithLine } from '../../components/commons/text';
 import { LoginHeader } from '../../components/commons/headers';
+import withContext from '../../components/hocs/withContext';
 
 const Props = {};
 const Login = (props: Props) => {
@@ -27,6 +27,16 @@ const Login = (props: Props) => {
   const [alertTitle, setAlertTitle] = useState('');
   const { navigation } = props;
   const { goBack, navigate } = navigation;
+  const { sessionContext } = props;
+  const {
+    appText: {
+      cancelText,
+      forgotPassText,
+      passwordInput,
+      submitText,
+      usernameInput,
+    },
+  } = sessionContext;
 
   async function userCall() {
     console.log(user);
@@ -36,12 +46,14 @@ const Login = (props: Props) => {
     console.log('submit');
   }
 
+  useEffect(() => console.log(props));
+
   return (
     <ContainerScroll>
       <LoginHeader
-        backText="Cancelar"
+        backText={cancelText}
         title="Login"
-        navigation={() => navigate('Onboarding')}
+        // navigation={() => navigate('Onboarding')}
         style={{ marginBottom: 20 }}
       />
 
@@ -56,7 +68,7 @@ const Login = (props: Props) => {
         <InputContainer style={{ marginTop: 10 }}>
           <Input
             onChangeText={text => setUser(text)}
-            placeholder="E-mail"
+            placeholder={usernameInput}
             keyboardType="email-address"
             value={user}
             spellCheck={false}
@@ -65,17 +77,17 @@ const Login = (props: Props) => {
 
           <PasswordInput
             onChangeText={text => setPassword(text)}
-            placeholder="Senha"
+            placeholder={passwordInput}
             secureTextEntry
             value={password}
           />
         </InputContainer>
-        <SubmitButton submit={submitForm} title="Enviar" />
+        <SubmitButton submit={submitForm} title={submitText} />
 
         <TextContainer>
           <TouchableOpacity onPress={() => navigate('ForgotPass')}>
             <Text color="#EB0F68" fontSize={13}>
-              Esqueci a senha
+              {forgotPassText}
             </Text>
           </TouchableOpacity>
         </TextContainer>
@@ -84,4 +96,4 @@ const Login = (props: Props) => {
   );
 };
 
-export default Login;
+export default withContext(Login);
