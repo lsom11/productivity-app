@@ -1,7 +1,7 @@
-import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
+import React, { Component } from "react"; // eslint-disable-line no-unused-vars
 
-import { Image, View } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { Image, View } from "react-native";
+import FastImage from "react-native-fast-image";
 
 export default class AsyncImage extends Component {
   constructor(props) {
@@ -9,22 +9,22 @@ export default class AsyncImage extends Component {
     this.state = { loaded: false };
   }
 
-  render() {
+  public render() {
     const { placeholder, style, source, noFlex = false } = this.props;
 
     return (
       <View style={!noFlex && { flex: 1 }}>
         <FastImage
           source={source}
-          resizeMode={'contain'}
+          resizeMode={"contain"}
           style={[style, !noFlex && { flex: this.state.loaded ? 1 : 0 }]}
           onLoad={this.onLoad}
         />
 
         {!this.state.loaded && (
           <Image
-            source={placeholder || require('../../assets/images/camera.png')}
-            resizeMode={'contain'}
+            source={placeholder || require("../../assets/images/camera.png")}
+            resizeMode={"contain"}
             style={[style, !noFlex && { flex: 1 }]}
           />
         )}
@@ -32,7 +32,7 @@ export default class AsyncImage extends Component {
     );
   }
 
-  onLoad = () => {
+  public onLoad = () => {
     this.setState(() => ({ loaded: true }));
   };
 }

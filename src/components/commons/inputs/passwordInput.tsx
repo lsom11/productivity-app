@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import { TextInput, Platform } from 'react-native';
-import styled, { css } from 'styled-components';
+import React, { Component } from "react";
+import { Platform, TextInput } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import styled, { css } from "styled-components";
 
 const Container = styled.View`
   height: 50px;
   width: 100%;
   border: 1px solid #9b9a9b;
   border-radius: 4px;
-  margin: ${props => (props.margin ? '4% 0' : 0)};
+  margin: ${props => (props.margin ? "4% 0" : 0)};
   z-index: -1;
 
   padding: 0 2.5%;
   ${Platform.select({
-    ios: css`
-      padding-left: 2%;
-    `,
     android: css`
       padding-left: 1.5%;
+    `,
+    ios: css`
+      padding-left: 2%;
     `,
   })};
   display: flex;
@@ -37,21 +37,21 @@ export default class PasswordInputText extends Component {
     super(props);
 
     this.state = {
-      icEye: 'visibility-off',
+      icEye: "visibility-off",
       password: false,
     };
   }
 
-  changePwdType = () => {
+  public changePwdType = () => {
     let newState;
     if (this.state.password) {
       newState = {
-        icEye: 'visibility-off',
+        icEye: "visibility-off",
         password: false,
       };
     } else {
       newState = {
-        icEye: 'visibility',
+        icEye: "visibility",
         password: true,
       };
     }
@@ -60,20 +60,20 @@ export default class PasswordInputText extends Component {
     this.setState(newState);
   };
 
-  render() {
+  public render() {
     const { marginBottom } = this.props;
     return (
       <Container marginBottom={marginBottom}>
         <Input
-          style={{ height: 50 }}
           {...this.props}
           secureTextEntry={!this.state.password}
+          style={{ height: 50 }}
         />
         <Icon
-          name={this.state.icEye}
-          size={this.props.iconSize}
           color={this.props.iconColor}
+          name={this.state.icEye}
           onPress={this.changePwdType}
+          size={this.props.iconSize}
         />
       </Container>
     );
@@ -81,7 +81,7 @@ export default class PasswordInputText extends Component {
 }
 
 PasswordInputText.defaultProps = {
+  iconColor: "#9B9A9B",
   iconSize: 25,
-  label: 'Password',
-  iconColor: '#9B9A9B',
+  label: "Password",
 };

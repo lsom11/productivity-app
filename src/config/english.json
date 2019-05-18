@@ -10,5 +10,6 @@
   "usernameRegisterInput": "Username",
   "notRegisteredText": "Not registered?",
   "alreadyRegisteredText": "Already registered?",
-  "enterHereText": "Click here!"
+  "enterHereText": "Click here!",
+  "modalButtonConfirmText": "Got it!"
 }

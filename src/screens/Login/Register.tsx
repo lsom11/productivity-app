@@ -1,31 +1,31 @@
-import React, { useState, useEffect, useContext } from 'react';
-import { Platform, TouchableOpacity, Linking, AppState } from 'react-native';
+import React, { useContext, useEffect, useState } from "react";
+import { AppState, Linking, Platform, TouchableOpacity } from "react-native";
 
-import Icon from 'react-native-vector-icons/FontAwesome';
-import { Input, PasswordInput } from '../../components/commons/inputs';
-import { Button as SubmitButton } from '../../components/commons/buttons/index';
+import Icon from "react-native-vector-icons/FontAwesome";
+import { Button as SubmitButton } from "../../components/commons/buttons/index";
+import { Input, PasswordInput } from "../../components/commons/inputs";
 
+import { LoginHeader } from "../../components/commons/headers";
+import { Image } from "../../components/commons/images";
+import { TitleWithLine } from "../../components/commons/text";
+import withContext from "../../components/hocs/withContext";
 import {
   ContainerScroll,
   ContentContainer,
-  LogoContainer,
   InputContainer,
-  TextContainer,
+  LogoContainer,
   Text,
+  TextContainer,
   TextView,
-} from './styles';
-import { Image } from '../../components/commons/images';
-import { TitleWithLine } from '../../components/commons/text';
-import { LoginHeader } from '../../components/commons/headers';
-import withContext from '../../components/hocs/withContext';
+} from "./styles";
 
 const Props = {};
 const Register = (props: Props) => {
-  const [user, setUser] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [RegisterAlert, setRegisterAlert] = useState(false);
-  const [alertTitle, setAlertTitle] = useState('');
+  const [alertTitle, setAlertTitle] = useState("");
   const { navigation } = props;
   const { goBack, navigate } = navigation;
   const { sessionContext } = props;
@@ -45,14 +45,12 @@ const Register = (props: Props) => {
   } = sessionContext;
 
   async function userCall() {
-    console.log(user);
+    return;
   }
 
   async function submitForm() {
-    console.log('submit');
+    return;
   }
-
-  useEffect(() => console.log(props));
 
   return (
     <ContainerScroll>
@@ -103,16 +101,16 @@ const Register = (props: Props) => {
 
         <TextContainer>
           <Text fontSize={13}>
-            {alreadyRegisteredText}{' '}
+            {alreadyRegisteredText}{" "}
             <Text
               color={secondaryColor}
               fontSize={13}
-              onPress={() => navigate('Login')}
+              onPress={() => navigate("Login")}
             >
               {enterHereText}
             </Text>
           </Text>
-          <TouchableOpacity onPress={() => navigate('ForgotPass')}>
+          <TouchableOpacity onPress={() => navigate("ForgotPass")}>
             <Text color={secondaryColor} fontSize={13}>
               {forgotPassText}
             </Text>

@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import React, { Component } from "react";
+import { Text, View } from "react-native";
 
-console.disableYellowBox = true;
-
-type Props = {};
-class DailyQuestions extends Component<Props> {
-  render() {
+interface IProps {
+  navigation: object;
+}
+class DailyQuestions extends Component<IProps> {
+  public render() {
     return (
       <View style={{ flex: 1 }}>
         <Text>Questions!</Text>

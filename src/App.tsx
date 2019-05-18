@@ -1,23 +1,24 @@
-import React, { Component } from 'react';
-import { createAppContainer } from 'react-navigation';
-import { View } from 'react-native';
-import createRootNavigator from './routers/RootNavigator';
+import React, { Component } from "react";
+import { View } from "react-native";
+import { createAppContainer } from "react-navigation";
+import Loading from "./components/Loading";
+import AlertModal from "./components/modals/alertModal/index";
 import SessionProvider, {
   State as SessionState,
-} from './context/sessionContext';
+} from "./context/sessionContext";
+import createRootNavigator from "./routers/RootNavigator";
 
 const Navigator = createAppContainer(createRootNavigator());
 
-console.disableYellowBox = true;
-
-type Props = {};
+const Props = {};
 class App extends Component<Props> {
-  render() {
+  public render() {
     return (
       <SessionProvider>
         {(session: SessionState) => [
           session && <Navigator sessionContext={session} />,
-          <View />,
+          <AlertModal />,
+          <Loading loading={modalContext.showLoading} />,
         ]}
         <Navigator />
       </SessionProvider>

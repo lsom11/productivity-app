@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import Icon from 'react-native-vector-icons/Ionicons';
+import React, { useContext, useEffect } from "react";
+import Icon from "react-native-vector-icons/Ionicons";
+import styled from "styled-components";
 
-import { HeaderContainer, HeaderText } from './styles';
+import { HeaderContainer, HeaderText } from "./styles";
 
 const NavContainer = styled.TouchableOpacity`
   position: absolute;
@@ -30,7 +30,7 @@ const LoginHeader = ({
 }) => {
   return (
     <HeaderContainer>
-      <NavContainer onPress={() => console.log('nav')}>
+      <NavContainer onPress={() => navigation.goBack()}>
         {showArrow && (
           <Icon
             name="ios-arrow-back"

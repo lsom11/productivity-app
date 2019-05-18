@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components';
-import { Platform, Dimensions } from 'react-native';
+import { Dimensions, Platform } from "react-native";
+import styled, { css } from "styled-components";
 
 const Container = styled.SafeAreaView`
   padding: 0 2.5%;
@@ -16,25 +16,25 @@ const ContentContainer = styled.View`
   margin-top: 10%;
   height: 100%;
   width: 100%;
-  padding: ${props => (props.noPadding ? '0 0' : '0 10%')};
+  padding: ${props => (props.noPadding ? "0 0" : "0 10%")};
   background-color: ${props =>
-    props.background ? props.background : 'transparent'};
+    props.background ? props.background : "transparent"};
 `;
 
 const LogoContainer = styled.View`
   height: 7.5%;
-  margin: ${props => (props.margin ? props.margin : '2% 0')};
+  margin: ${props => (props.margin ? props.margin : "2% 0")};
 `;
 const InputContainer = styled.View`
   margin-bottom: 4%;
 `;
 const TextContainer = styled.View`
   ${Platform.select({
-    ios: css`
-      height: 60%;
-    `,
     android: css`
       height: 25%;
+    `,
+    ios: css`
+      height: 60%;
     `,
   })};
   justify-content: space-around;
@@ -49,11 +49,11 @@ const TextView = styled.View`
 `;
 
 const Text = styled.Text`
-  color: ${props => props.color || '#000'};
-  font-size: ${props => props.fontSize || '13px'};
-  text-decoration: ${props => (props.underline ? 'underline' : 'none')};
+  color: ${props => props.color || "#000"};
+  font-size: ${props => props.fontSize || "13px"};
+  text-decoration: ${props => (props.underline ? "underline" : "none")};
   text-decoration-color: ${props =>
-    props.underlineColor ? props.underlineColor : 'transparent'};
+    props.underlineColor ? props.underlineColor : "transparent"};
   text-align: center;
 `;
 

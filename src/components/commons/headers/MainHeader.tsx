@@ -1,12 +1,12 @@
 /* eslint-disable no-nested-ternary */
 
-import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import { Platform, Button } from 'react-native';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import truncateString from '../../../utils/truncateString';
+import React, { useContext, useEffect } from "react";
+import { Button, Platform } from "react-native";
+import Icon from "react-native-vector-icons/MaterialIcons";
+import styled from "styled-components";
+import truncateString from "../../../utils/truncateString";
 
-import { HeaderText } from './styles';
+import { HeaderText } from "./styles";
 
 const DrawerContainer = styled.TouchableOpacity``;
 const TitleContainer = styled.View`
@@ -32,7 +32,7 @@ const HeaderContainer = styled.View`
   border-bottom-color: grey;
 `;
 
-const MainHeader = ({ title = 'Main', navigation }) => {
+const MainHeader = ({ title = "Main", navigation }) => {
   return (
     <HeaderContainer>
       {/* <DrawerContainer>
@@ -45,7 +45,7 @@ const MainHeader = ({ title = 'Main', navigation }) => {
           />
         ) : (
           <Button transparent>
-          
+
             <Icon
               name={'account-circle'}
               size={30}

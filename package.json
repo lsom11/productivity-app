@@ -7,7 +7,9 @@
     "android": "react-native run-android",
     "android:bundle": "react-native bundle --platform android --dev false --entry-file index.android.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
     "ios": "cd ios && pod install && cd .. && react-native run-ios --simulator='iPhone 6s'",
-    "test": "jest"
+    "test": "jest",
+    "precommit": "lint-staged",
+    "lint": "tslint --project tsconfig.json -e src/**/*.spec.*"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.4.0",
@@ -24,7 +26,8 @@
     "react-native-vector-icons": "^6.4.2",
     "react-navigation": "^3.9.1",
     "react-navigation-material-bottom-tabs": "^1.0.0",
-    "styled-components": "^4.2.0"
+    "styled-components": "^4.2.0",
+    "tslint-config-airbnb": "^5.11.1"
   },
   "devDependencies": {
     "@babel/core": "^7.4.4",
@@ -44,7 +47,8 @@
     "tslint-config-prettier": "^1.18.0",
     "tslint-config-standard": "^8.0.1",
     "tslint-react": "^4.0.0",
-    "typescript": "^3.4.5"
+    "typescript": "^3.4.5",
+    "typescript-tslint-plugin": "^0.3.1"
   },
   "jest": {
     "preset": "react-native",
@@ -63,5 +67,11 @@
       "<rootDir>/node_modules/"
     ],
     "cacheDirectory": ".jest/cache"
+  },
+  "lint-staged": {
+    "{src,test}/**/*.ts*": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }

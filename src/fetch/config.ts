@@ -1,10 +1,8 @@
-import { getDeviceUrlParams } from '../utils/deviceInfo';
-
 const API_URL: string =
-  'https://pvxc214tzi.execute-api.us-east-1.amazonaws.com/v1';
+  "https://pvxc214tzi.execute-api.us-east-1.amazonaws.com/v1";
 
 const getConfiguration = async locale => {
-  const method = 'GET';
+  const method = "GET";
   const fetchOptions = {
     method,
   };

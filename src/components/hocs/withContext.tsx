@@ -1,14 +1,24 @@
-import React from 'react';
+import React from "react";
+import {
+  Consumer as ModalConsumer,
+  IState as ModalState,
+} from "../../context/modalContext";
 import {
   Consumer as SessionConsumer,
-  State as SessionState,
-} from '../../context/sessionContext';
+  IState as SessionState,
+} from "../../context/sessionContext";
 
 const withContext = Comp => {
   return props => (
-    <SessionConsumer {...props}>
-      {(session: SessionState) => <Comp {...props} sessionContext={session} />}
-    </SessionConsumer>
+    <ModalConsumer {...props}>
+      {(modalContext: ModalState) => (
+        <SessionConsumer {...props}>
+          {(session: SessionState) => (
+            <Comp {...props} sessionContext={session} />
+          )}
+        </SessionConsumer>
+      )}
+    </ModalConsumer>
   );
 };
 

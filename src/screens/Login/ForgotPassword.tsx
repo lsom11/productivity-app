@@ -1,23 +1,23 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Platform, View } from 'react-native';
-import { Image } from '../../components/commons/images';
-import { LoginHeader } from '../../components/commons/headers';
-import { Button as SubmitButton } from '../../components/commons/buttons';
+import React, { useContext, useEffect, useState } from "react";
+import { Platform, View } from "react-native";
+import { Button as SubmitButton } from "../../components/commons/buttons";
+import { LoginHeader } from "../../components/commons/headers";
+import { Image } from "../../components/commons/images";
 
+import { Input } from "../../components/commons/inputs";
 import {
   Container,
   ContentContainer,
-  LogoContainer,
-  TextContainer,
-  Text,
-  InputContainer,
-  TextView,
   ImageContainer,
-} from './styles';
-import { Input } from '../../components/commons/inputs';
+  InputContainer,
+  LogoContainer,
+  Text,
+  TextContainer,
+  TextView,
+} from "./styles";
 
-import checkInternetConnection from '../../utils/checkInternet';
-import { SessionContext } from '../../context/sessionContext';
+import { SessionContext } from "../../context/sessionContext";
+import checkInternetConnection from "../../utils/checkInternet";
 
 const Props = {};
 const ForgotPass = (props: Props) => {
@@ -36,21 +36,21 @@ const ForgotPass = (props: Props) => {
   } = session;
   const { navigation } = props;
   const { goBack, navigate, state } = navigation;
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
   const [error, setError] = useState(false);
 
   async function submitForm() {
-    console.log('submit');
+    return;
   }
 
   const handleNav = async () => {
-    console.log('nav');
+    return;
   };
 
   return (
     <Container
       style={{
-        paddingTop: Platform.OS === 'android' ? 15 : 0,
+        paddingTop: Platform.OS === "android" ? 15 : 0,
       }}
     >
       <LoginHeader
@@ -89,13 +89,13 @@ const ForgotPass = (props: Props) => {
           <SubmitButton submit={submitForm} title={submitText} />
           <View style={{ marginTop: 15 }} />
           <Text color="#666666" fontSize={13}>
-            {notRegisteredText}{' '}
+            {notRegisteredText}{" "}
             <Text
               color={secondaryColor}
               fontSize={13}
               underline
               underlineColor={secondaryColor}
-              onPress={() => navigate('Register')}
+              onPress={() => navigate("Register")}
             >
               {enterHereText}
             </Text>
