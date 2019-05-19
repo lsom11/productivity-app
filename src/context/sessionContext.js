@@ -1,9 +1,11 @@
 import React, { createContext, PureComponent } from "react";
+import AsyncStorage from "@react-native-community/async-storage";
 import DeviceInfo from "react-native-device-info";
 import englishText from "../config/english.json";
 import portugueseText from "../config/portuguese.json";
 
 import { getConfiguration } from "../fetch/config";
+import { userInfo } from "../fetch/user.js";
 
 const SessionContext = createContext(null);
 const { Provider, Consumer } = SessionContext;
@@ -11,15 +13,35 @@ const { Provider, Consumer } = SessionContext;
 class SessionProvider extends PureComponent {
   state = {
     appText: {},
-    email: "",
     features: {},
-    firstName: "",
     isLoggedIn: false,
-    lastName: "",
+
+    setLogin: (user, token) => {
+      this.setState(
+        {
+          isLoggedIn: true,
+          token,
+          user,
+        },
+        () => this.storeInfo(),
+      );
+    },
     theme: {
       primaryColor: "#000",
-      secondaryColor: "#EB0F68",
+      secondaryColor: "#4ecdc4",
     },
+    token: null,
+    user: {
+      email: "",
+      firstName: "",
+      lastName: "",
+      username: "",
+    },
+  };
+
+  storeInfo = async () => {
+    const { token } = this.state;
+    await AsyncStorage.setItem("token", token);
   };
 
   getDeviceLanguage = async () => {
@@ -30,11 +52,22 @@ class SessionProvider extends PureComponent {
     } else {
       appText = portugueseText;
     }
-    this.setState({ appText });
+    this.setState({ appText, locale: deviceLocale });
+  };
+
+  checkLogin = async () => {
+    const token = await AsyncStorage.getItem("token");
+    console.log(token);
+
+    if (token) {
+      const user = await userInfo(token);
+      this.state.setLogin(user, token);
+    }
   };
 
   async componentDidMount() {
     await this.getDeviceLanguage();
+    await this.checkLogin();
   }
 
   render() {

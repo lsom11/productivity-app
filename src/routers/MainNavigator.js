@@ -9,7 +9,7 @@ const mainNavigator = createMaterialBottomTabNavigator(
     DailyQuestions: {
       navigationOptions: () => ({
         tabBarIcon: () => <Icon name="language" size={24} color="#fff" />,
-        tabBarLabel: "Destaques",
+        tabBarLabel: "Daily Questions",
       }),
       screen: DailyQuestionsNavigator,
     },

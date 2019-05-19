@@ -30,7 +30,7 @@ const LoginHeader = ({
 }) => {
   return (
     <HeaderContainer>
-      <NavContainer onPress={() => navigation.goBack()}>
+      <NavContainer onPress={() => navigation()}>
         {showArrow && (
           <Icon
             name="ios-arrow-back"
@@ -39,7 +39,7 @@ const LoginHeader = ({
             style={{ marginRight: 10 }}
           />
         )}
-        <HeaderText>{backText}</HeaderText>
+        <HeaderText color={navColor}>{backText}</HeaderText>
       </NavContainer>
       <TitleContainer>
         <HeaderText title>{title}</HeaderText>

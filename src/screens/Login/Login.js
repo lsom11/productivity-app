@@ -14,15 +14,15 @@ import {
   Text,
   TextContainer,
 } from "./styles";
+import getText from "../../utils/getText";
+import { userInfo } from "../../fetch/user";
 
 const Login = props => {
   const [user, setUser] = useState("");
   const [password, setPassword] = useState("");
-  const [loginAlert, setLoginAlert] = useState(false);
-  const [alertTitle, setAlertTitle] = useState("");
-  const { navigation } = props;
-  const { goBack, navigate } = navigation;
-  const { sessionContext, modalContext } = props;
+  const { sessionContext, modalContext, navigation } = props;
+  const { navigate } = navigation;
+  const { setShowLoading, toggleAlertModal, setAlertText } = modalContext;
   const {
     theme: { primaryColor, secondaryColor },
     appText: {
@@ -33,20 +33,41 @@ const Login = props => {
       usernameInput,
       notRegisteredText,
       enterHereText,
+      locale,
     },
+    setLogin,
   } = sessionContext;
 
-  async function userCall() {
-    return;
+  async function userCall(auth) {
+    const fetchedUser = await userInfo(auth.token);
+    await setLogin(fetchedUser, auth.token);
+    await navigate("MainNavigator");
   }
 
   async function submitForm() {
-    console.log(user, password);
+    await setShowLoading(true);
     try {
       const token = await login(user, password);
-      console.log(token);
+      await userCall(token);
     } catch (e) {
-      console.log(e);
+      await setAlertText({
+        description: getText(locale, "invalidCredentialsLoginDescription"),
+        title: getText(locale, "invalidCredentialsLoginTitle"),
+      });
+      await toggleAlertModal();
+    }
+    await setShowLoading(false);
+  }
+
+  async function validateBeforeSubmit() {
+    if (!user || !password) {
+      await setAlertText({
+        description: getText(locale, "blankCredentialsLoginDescription"),
+        title: getText(locale, "blankCredentialsLoginTitle"),
+      });
+      await toggleAlertModal();
+    } else {
+      submitForm();
     }
   }
 
@@ -57,7 +78,7 @@ const Login = props => {
         title="Login"
         color={primaryColor}
         navColor={secondaryColor}
-        // navigation={() => navigate('Onboarding')}
+        navigation={() => navigate("Register")}
         style={{ marginBottom: 20 }}
       />
 
@@ -86,7 +107,11 @@ const Login = props => {
             value={password}
           />
         </InputContainer>
-        <SubmitButton submit={submitForm} title={submitText} />
+        <SubmitButton
+          backgroundColor={secondaryColor}
+          submit={validateBeforeSubmit}
+          title={submitText}
+        />
 
         <TextContainer>
           <Text>
@@ -100,9 +125,9 @@ const Login = props => {
             </Text>
           </Text>
 
-          <Text color={secondaryColor} fontSize={"13px"}>
+          {/* <Text color={secondaryColor} fontSize={"13px"}>
             {forgotPassText}
-          </Text>
+          </Text> */}
         </TextContainer>
       </ContentContainer>
     </ContainerScroll>

@@ -55,7 +55,6 @@
     "linebreak-style": 0,
     "comma-dangle": 0,
     "arrow-parens": 0,
-    "no-unused-vars": 0,
     "no-throw-literal": 0,
     "camelcase": 0,
     "eqeqeq": 0,
@@ -64,6 +63,7 @@
     "import/no-named-as-default": 0,
     "class-methods-use-this": 0,
     "sort-keys": 1,
-    "sort-vars": 1
+    "sort-vars": 1,
+    "no-unused-vars": 0
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TouchableOpacity } from "react-native";
+// import { TouchableOpacity } from "react-native";
 
 import { Button as SubmitButton } from "../../components/commons/buttons/index";
 import { Input, PasswordInput } from "../../components/commons/inputs";
@@ -14,17 +14,19 @@ import {
   Text,
   TextContainer,
 } from "./styles";
+import getText from "../../utils/getText";
+import { register } from "../../fetch/auth";
+import { userInfo } from "../../fetch/user";
 
 const Register = props => {
   const [user, setUser] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [RegisterAlert, setRegisterAlert] = useState(false);
-  const [alertTitle, setAlertTitle] = useState("");
-  const { navigation } = props;
+  const { sessionContext, modalContext, navigation } = props;
   const { goBack, navigate } = navigation;
-  const { sessionContext } = props;
+  const { setShowLoading, toggleAlertModal, setAlertText } = modalContext;
   const {
+    locale,
     theme: { primaryColor, secondaryColor },
     appText: {
       cancelText,
@@ -37,14 +39,40 @@ const Register = props => {
       usernameRegisterInput,
       enterHereText,
     },
+    setLogin,
   } = sessionContext;
 
-  async function userCall() {
-    return;
+  async function userCall(auth) {
+    const fetchedUser = await userInfo(auth.token);
+    await setLogin(fetchedUser, auth.token);
+    await navigate("MainNavigator");
   }
 
   async function submitForm() {
-    return;
+    await setShowLoading(true);
+    try {
+      const token = await register(email, user, password);
+      await userCall(token);
+    } catch (e) {
+      await setAlertText({
+        description: getText(locale, "invalidCredentialsLoginDescription"),
+        title: getText(locale, "invalidCredentialsLoginTitle"),
+      });
+      await toggleAlertModal();
+    }
+    await setShowLoading(false);
+  }
+
+  async function validateBeforeSubmit() {
+    if (!user || !password) {
+      await setAlertText({
+        description: getText(locale, "blankCredentialsLoginDescription"),
+        title: getText(locale, "blankCredentialsLoginTitle"),
+      });
+      await toggleAlertModal();
+    } else {
+      submitForm();
+    }
   }
 
   return (
@@ -54,7 +82,7 @@ const Register = props => {
         title="Register"
         color={primaryColor}
         navColor={secondaryColor}
-        // navigation={() => navigate('Onboarding')}
+        navigation={() => goBack()}
         style={{ marginBottom: 20 }}
       />
 
@@ -92,7 +120,11 @@ const Register = props => {
           />
         </InputContainer>
 
-        <SubmitButton submit={submitForm} title={submitText} />
+        <SubmitButton
+          backgroundColor={secondaryColor}
+          submit={validateBeforeSubmit}
+          title={submitText}
+        />
 
         <TextContainer>
           <Text fontSize={13}>
@@ -105,11 +137,11 @@ const Register = props => {
               {enterHereText}
             </Text>
           </Text>
-          <TouchableOpacity onPress={() => navigate("ForgotPass")}>
+          {/* <TouchableOpacity onPress={() => navigate("ForgotPass")}>
             <Text color={secondaryColor} fontSize={13}>
               {forgotPassText}
             </Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
         </TextContainer>
         <TextContainer />
       </ContentContainer>

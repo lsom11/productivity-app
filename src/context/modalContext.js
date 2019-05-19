@@ -9,18 +9,18 @@ class ModalProvider extends PureComponent {
       description: "This is a description",
       title: "Great title!",
     },
-    setAlertText: (type, locale) => {
+    setAlertText: ({ title, description }) => {
       this.setState({
         alertText: {
-          description: "Test 2",
-          title: "Test",
+          description,
+          title,
         },
       });
     },
     setShowLoading: () =>
       this.setState(prevState => ({ showLoading: !prevState.showLoading })),
     showAlertModal: false,
-    showLoading: true,
+    showLoading: false,
     toggleAlertModal: () =>
       this.setState(prevState => ({
         showAlertModal: !prevState.showAlertModal,

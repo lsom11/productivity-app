@@ -16,7 +16,7 @@ const HeaderContainer = styled.View`
   })};
 `;
 const HeaderText = styled.Text`
-  color: ${props => (props.title ? "#000" : "#EA0F67")};
+  color: ${props => props.color || "#000"};
   font-size: ${props => (props.title ? "18" : "14")};
   align-self: center;
 `;

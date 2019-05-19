@@ -14,6 +14,7 @@ const login = async (username, password) => {
   const url = `${API_URL}/login`;
   const response = await fetch(url, fetchOptions);
   const json = await response.json();
+  console.log(json);
   if (response.status > 299) {
     throw json;
   }
@@ -21,8 +22,11 @@ const login = async (username, password) => {
 };
 const register = async (email, username, password) => {
   const method = "POST";
+  // TODO - onboarding screen pt 2 with name region default language etc
   const body = {
     email,
+    firstName: "Luc",
+    lastName: "Somers",
     password,
     username,
   };
@@ -33,6 +37,7 @@ const register = async (email, username, password) => {
 
   const url = `${API_URL}/register`;
   const response = await fetch(url, fetchOptions);
+  console.log(response, "here");
   const json = await response.json();
   if (response.status > 299) {
     throw json;

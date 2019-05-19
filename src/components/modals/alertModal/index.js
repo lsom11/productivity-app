@@ -7,13 +7,15 @@ import { SessionContext } from "../../../context/sessionContext";
 import { Container, ContentContainer, Text, TitleText } from "./styles";
 
 const AlertModal = props => {
-  const { hideButton, closeModal } = props;
+  const { hideButton } = props;
   const modalContext = useContext(ModalContext);
   const sessionContext = useContext(SessionContext);
   const {
     appText: { modalButtonConfirmText },
+    theme: { secondaryColor },
   } = sessionContext;
   const {
+    toggleAlertModal,
     showAlertModal,
     alertText: { title, description },
   } = modalContext;
@@ -34,9 +36,10 @@ const AlertModal = props => {
           ) : null}
           {!hideButton && (
             <Button
+              backgroundColor={secondaryColor}
               marginTop={24}
               title={modalButtonConfirmText}
-              submit={closeModal}
+              submit={() => toggleAlertModal()}
             />
           )}
         </ContentContainer>

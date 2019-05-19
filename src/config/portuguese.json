@@ -11,5 +11,9 @@
   "notRegisteredText": "Não tem conta?",
   "alreadyRegisteredText": "Já tem conta?",
   "enterHereText": "Clique aqui!",
-  "modalButtonConfirmText": "Ok entendi."
+  "modalButtonConfirmText": "Ok entendi.",
+  "invalidCredentialsLoginDescription": "Por favor preencha todos os campos.",
+  "invalidCredentialsLoginTitle": "Tente novamente",
+  "blankCredentialsLoginDescription": "Seus dados estão incorretos. \n Por favor, verifique seu e-mail e senha e tente novamente.",
+  "blankCredentialsLoginTitle": "Tente novamente"
 }

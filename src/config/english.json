@@ -11,5 +11,9 @@
   "notRegisteredText": "Not registered?",
   "alreadyRegisteredText": "Already registered?",
   "enterHereText": "Click here!",
-  "modalButtonConfirmText": "Got it!"
+  "modalButtonConfirmText": "Got it!",
+  "invalidCredentialsLoginDescription": "Username and/or Password invalid. Please try again.",
+  "invalidCredentialsLoginTitle": "Invalid Credentials.",
+  "blankCredentialsLoginDescription": "Username and/or Password can't be blank. Please try again.",
+  "blankCredentialsLoginTitle": "Invalid Credentials."
 }

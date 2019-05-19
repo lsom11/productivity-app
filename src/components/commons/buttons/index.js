@@ -7,8 +7,7 @@ const Container = styled.TouchableOpacity`
   width: 100%;
   border-radius: 4px;
   padding: 0 2.5%;
-  background-color: ${props =>
-    props.backgroundColor ? props.backgroundColor : "#eb0f68"};
+  background-color: ${props => props.backgroundColor || "#000"};
   padding-right: ${props => (props.paddingRight ? props.paddingRight : 0)};
   display: flex;
   justify-content: center;
@@ -21,12 +20,6 @@ const Container = styled.TouchableOpacity`
 const Text = styled.Text`
   font-size: 16px;
   color: ${props => (props.textColor ? props.textColor : "#fff")};
-  ${Platform.select({
-    android: css``,
-    ios: css`
-      margin-top: 7px;
-    `,
-  })};
 `;
 
 const Button = ({

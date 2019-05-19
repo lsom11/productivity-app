@@ -29,6 +29,7 @@ const InputContainer = styled.View`
   margin-bottom: 4%;
 `;
 const TextContainer = styled.View`
+  margin-top: 2.5%;
   ${Platform.select({
     android: css`
       height: 25%;
@@ -37,7 +38,7 @@ const TextContainer = styled.View`
       height: 60%;
     `,
   })};
-  justify-content: space-around;
+  justify-content: flex-start;
   align-items: center;
 `;
 const TextView = styled.View`
