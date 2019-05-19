@@ -1,4 +1,4 @@
-function truncateString(str: string, l: integer = 20, e: string | null) {
+function truncateString(str, l = 20, e) {
   let length = l;
   let ending = e;
   if (length == null) {

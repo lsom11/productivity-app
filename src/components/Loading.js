@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Animated, Easing, View } from "react-native";
 import styled from "styled-components";
-import Icon from "../../assets/images/utils/loading.png";
+import Icon from "../assets/images/loading.png";
+import { ModalContext } from "../context/modalContext";
 
 const LoadingContainer = styled.View`
   height: 100%;
@@ -12,13 +13,10 @@ const LoadingContainer = styled.View`
   align-items: center;
 `;
 
-interface IProps {
-  size: string;
-  color: string;
-  loading: boolean;
-}
-const Loading = (props: IProps) => {
-  const { size = "large", color = "#000", loading } = props;
+const Loading = props => {
+  const modalContext = useContext(ModalContext);
+  const { showLoading } = modalContext;
+  const { size = "large", color = "#000" } = props;
   const holder = new Animated.Value(0);
 
   const rotate = () => {
@@ -37,7 +35,7 @@ const Loading = (props: IProps) => {
     outputRange: ["0deg", "360deg"],
   });
 
-  if (loading) {
+  if (showLoading) {
     return (
       <LoadingContainer>
         <Animated.Image

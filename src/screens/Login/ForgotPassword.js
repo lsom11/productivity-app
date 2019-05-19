@@ -1,14 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Platform, View } from "react-native";
 import { Button as SubmitButton } from "../../components/commons/buttons";
 import { LoginHeader } from "../../components/commons/headers";
-import { Image } from "../../components/commons/images";
 
 import { Input } from "../../components/commons/inputs";
 import {
   Container,
   ContentContainer,
-  ImageContainer,
   InputContainer,
   LogoContainer,
   Text,
@@ -17,10 +15,8 @@ import {
 } from "./styles";
 
 import { SessionContext } from "../../context/sessionContext";
-import checkInternetConnection from "../../utils/checkInternet";
 
-const Props = {};
-const ForgotPass = (props: Props) => {
+const ForgotPass = props => {
   const session = useContext(SessionContext);
   const {
     theme: { primaryColor, secondaryColor },

@@ -6,22 +6,19 @@ import { ModalContext } from "../../../context/modalContext";
 import { SessionContext } from "../../../context/sessionContext";
 import { Container, ContentContainer, Text, TitleText } from "./styles";
 
-interface IModalProps {
-  title: string;
-  description: string;
-  showModal: boolean;
-  closeModal: void;
-  hideButton: boolean;
-}
-const AlertModal = (props: IModalProps) => {
-  const { title, description, hideButton, closeModal, showModal } = props;
+const AlertModal = props => {
+  const { hideButton, closeModal } = props;
   const modalContext = useContext(ModalContext);
   const sessionContext = useContext(SessionContext);
   const {
     appText: { modalButtonConfirmText },
   } = sessionContext;
+  const {
+    showAlertModal,
+    alertText: { title, description },
+  } = modalContext;
   return (
-    <Modal animationType={"fade"} transparent={true} visible={showModal}>
+    <Modal animationType={"fade"} transparent={true} visible={showAlertModal}>
       <Container>
         <ContentContainer>
           <TitleText>{title}</TitleText>

@@ -1,13 +1,10 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppState, Linking, Platform, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
+import { TouchableOpacity } from "react-native";
 
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Button as SubmitButton } from "../../components/commons/buttons/index";
 import { Input, PasswordInput } from "../../components/commons/inputs";
 
 import { LoginHeader } from "../../components/commons/headers";
-import { Image } from "../../components/commons/images";
-import { TitleWithLine } from "../../components/commons/text";
 import withContext from "../../components/hocs/withContext";
 import {
   ContainerScroll,
@@ -16,14 +13,13 @@ import {
   LogoContainer,
   Text,
   TextContainer,
-  TextView,
 } from "./styles";
 
-const Props = {};
-const Login = (props: Props) => {
+const Register = props => {
   const [user, setUser] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginAlert, setLoginAlert] = useState(false);
+  const [RegisterAlert, setRegisterAlert] = useState(false);
   const [alertTitle, setAlertTitle] = useState("");
   const { navigation } = props;
   const { goBack, navigate } = navigation;
@@ -36,7 +32,9 @@ const Login = (props: Props) => {
       passwordInput,
       submitText,
       usernameInput,
-      notRegisteredText,
+      alreadyRegisteredText,
+      emailRegisterInput,
+      usernameRegisterInput,
       enterHereText,
     },
   } = sessionContext;
@@ -53,7 +51,7 @@ const Login = (props: Props) => {
     <ContainerScroll>
       <LoginHeader
         backText={cancelText}
-        title="Login"
+        title="Register"
         color={primaryColor}
         navColor={secondaryColor}
         // navigation={() => navigate('Onboarding')}
@@ -71,9 +69,17 @@ const Login = (props: Props) => {
         <InputContainer style={{ marginTop: 10 }}>
           <Input
             onChangeText={text => setUser(text)}
-            placeholder={usernameInput}
+            placeholder={usernameRegisterInput}
             keyboardType="email-address"
             value={user}
+            spellCheck={false}
+            autoCorrect={false}
+          />
+          <Input
+            onChangeText={text => setEmail(text)}
+            placeholder={emailRegisterInput}
+            keyboardType="email-address"
+            value={email}
             spellCheck={false}
             autoCorrect={false}
           />
@@ -85,27 +91,30 @@ const Login = (props: Props) => {
             value={password}
           />
         </InputContainer>
+
         <SubmitButton submit={submitForm} title={submitText} />
 
         <TextContainer>
-          <Text>
-            {notRegisteredText}{" "}
+          <Text fontSize={13}>
+            {alreadyRegisteredText}{" "}
             <Text
               color={secondaryColor}
-              fontSize={"13px"}
-              onPress={() => navigate("Register")}
+              fontSize={13}
+              onPress={() => navigate("Login")}
             >
               {enterHereText}
             </Text>
           </Text>
-
-          <Text color={secondaryColor} fontSize={"13px"}>
-            {forgotPassText}
-          </Text>
+          <TouchableOpacity onPress={() => navigate("ForgotPass")}>
+            <Text color={secondaryColor} fontSize={13}>
+              {forgotPassText}
+            </Text>
+          </TouchableOpacity>
         </TextContainer>
+        <TextContainer />
       </ContentContainer>
     </ContainerScroll>
   );
 };
 
-export default withContext(Login);
+export default withContext(Register);

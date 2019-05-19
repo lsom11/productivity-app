@@ -1,5 +1,4 @@
-const API_URL: string =
-  "https://pvxc214tzi.execute-api.us-east-1.amazonaws.com/v1";
+const API_URL = "https://pvxc214tzi.execute-api.us-east-1.amazonaws.com/v1";
 
 const getConfiguration = async locale => {
   const method = "GET";

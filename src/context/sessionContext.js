@@ -5,24 +5,11 @@ import portugueseText from "../config/portuguese.json";
 
 import { getConfiguration } from "../fetch/config";
 
-const SessionContext = createContext<State | null>(null);
+const SessionContext = createContext(null);
 const { Provider, Consumer } = SessionContext;
 
-export interface IState {
-  isLoggedIn: boolean;
-  firstName: string;
-  lastName: string;
-  email: string;
-  features: {};
-  appText: {};
-  theme: {
-    primaryColor: string;
-    secondaryColor: string;
-  };
-}
-
-class SessionProvider extends PureComponent<IState> {
-  public state: State = {
+class SessionProvider extends PureComponent {
+  state = {
     appText: {},
     email: "",
     features: {},
@@ -35,7 +22,7 @@ class SessionProvider extends PureComponent<IState> {
     },
   };
 
-  public getDeviceLanguage = async () => {
+  getDeviceLanguage = async () => {
     const deviceLocale = await DeviceInfo.getDeviceLocale();
     let appText;
     if (deviceLocale === "en" || "en-US") {
@@ -46,11 +33,11 @@ class SessionProvider extends PureComponent<IState> {
     this.setState({ appText });
   };
 
-  public async componentDidMount() {
+  async componentDidMount() {
     await this.getDeviceLanguage();
   }
 
-  public render() {
+  render() {
     return <Provider value={this.state}>{this.props.children}</Provider>;
   }
 }

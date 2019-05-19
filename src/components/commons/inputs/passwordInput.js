@@ -42,7 +42,7 @@ export default class PasswordInputText extends Component {
     };
   }
 
-  public changePwdType = () => {
+  changePwdType = () => {
     let newState;
     if (this.state.password) {
       newState = {
@@ -60,7 +60,7 @@ export default class PasswordInputText extends Component {
     this.setState(newState);
   };
 
-  public render() {
+  render() {
     const { marginBottom } = this.props;
     return (
       <Container marginBottom={marginBottom}>

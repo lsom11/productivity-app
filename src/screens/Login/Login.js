@@ -1,14 +1,11 @@
-import React, { useContext, useEffect, useState } from "react";
-import { AppState, Linking, Platform, TouchableOpacity } from "react-native";
+import React, { useState } from "react";
 
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Button as SubmitButton } from "../../components/commons/buttons/index";
 import { Input, PasswordInput } from "../../components/commons/inputs";
 
 import { LoginHeader } from "../../components/commons/headers";
-import { Image } from "../../components/commons/images";
-import { TitleWithLine } from "../../components/commons/text";
 import withContext from "../../components/hocs/withContext";
+import { login } from "../../fetch/auth";
 import {
   ContainerScroll,
   ContentContainer,
@@ -16,19 +13,16 @@ import {
   LogoContainer,
   Text,
   TextContainer,
-  TextView,
 } from "./styles";
 
-const Props = {};
-const Register = (props: Props) => {
+const Login = props => {
   const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [RegisterAlert, setRegisterAlert] = useState(false);
+  const [loginAlert, setLoginAlert] = useState(false);
   const [alertTitle, setAlertTitle] = useState("");
   const { navigation } = props;
   const { goBack, navigate } = navigation;
-  const { sessionContext } = props;
+  const { sessionContext, modalContext } = props;
   const {
     theme: { primaryColor, secondaryColor },
     appText: {
@@ -37,9 +31,7 @@ const Register = (props: Props) => {
       passwordInput,
       submitText,
       usernameInput,
-      alreadyRegisteredText,
-      emailRegisterInput,
-      usernameRegisterInput,
+      notRegisteredText,
       enterHereText,
     },
   } = sessionContext;
@@ -49,14 +41,20 @@ const Register = (props: Props) => {
   }
 
   async function submitForm() {
-    return;
+    console.log(user, password);
+    try {
+      const token = await login(user, password);
+      console.log(token);
+    } catch (e) {
+      console.log(e);
+    }
   }
 
   return (
     <ContainerScroll>
       <LoginHeader
         backText={cancelText}
-        title="Register"
+        title="Login"
         color={primaryColor}
         navColor={secondaryColor}
         // navigation={() => navigate('Onboarding')}
@@ -74,17 +72,9 @@ const Register = (props: Props) => {
         <InputContainer style={{ marginTop: 10 }}>
           <Input
             onChangeText={text => setUser(text)}
-            placeholder={usernameRegisterInput}
+            placeholder={usernameInput}
             keyboardType="email-address"
             value={user}
-            spellCheck={false}
-            autoCorrect={false}
-          />
-          <Input
-            onChangeText={text => setEmail(text)}
-            placeholder={emailRegisterInput}
-            keyboardType="email-address"
-            value={email}
             spellCheck={false}
             autoCorrect={false}
           />
@@ -96,30 +86,27 @@ const Register = (props: Props) => {
             value={password}
           />
         </InputContainer>
-
         <SubmitButton submit={submitForm} title={submitText} />
 
         <TextContainer>
-          <Text fontSize={13}>
-            {alreadyRegisteredText}{" "}
+          <Text>
+            {notRegisteredText}{" "}
             <Text
               color={secondaryColor}
-              fontSize={13}
-              onPress={() => navigate("Login")}
+              fontSize={"13px"}
+              onPress={() => navigate("Register")}
             >
               {enterHereText}
             </Text>
           </Text>
-          <TouchableOpacity onPress={() => navigate("ForgotPass")}>
-            <Text color={secondaryColor} fontSize={13}>
-              {forgotPassText}
-            </Text>
-          </TouchableOpacity>
+
+          <Text color={secondaryColor} fontSize={"13px"}>
+            {forgotPassText}
+          </Text>
         </TextContainer>
-        <TextContainer />
       </ContentContainer>
     </ContainerScroll>
   );
 };
 
-export default withContext(Register);
+export default withContext(Login);

@@ -9,7 +9,7 @@ export default class AsyncImage extends Component {
     this.state = { loaded: false };
   }
 
-  public render() {
+  render() {
     const { placeholder, style, source, noFlex = false } = this.props;
 
     return (
@@ -32,7 +32,7 @@ export default class AsyncImage extends Component {
     );
   }
 
-  public onLoad = () => {
+  onLoad = () => {
     this.setState(() => ({ loaded: true }));
   };
 }
