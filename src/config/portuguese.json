@@ -15,5 +15,7 @@
   "invalidCredentialsLoginDescription": "Por favor preencha todos os campos.",
   "invalidCredentialsLoginTitle": "Tente novamente",
   "blankCredentialsLoginDescription": "Seus dados estão incorretos. \n Por favor, verifique seu e-mail e senha e tente novamente.",
-  "blankCredentialsLoginTitle": "Tente novamente"
+  "blankCredentialsLoginTitle": "Tente novamente",
+  "hello": "Olá,",
+  "questionsTitle": "Jornal Diário"
 }

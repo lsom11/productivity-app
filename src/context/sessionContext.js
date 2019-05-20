@@ -27,8 +27,9 @@ class SessionProvider extends PureComponent {
       );
     },
     theme: {
+      backgroundColor: "#345292",
       primaryColor: "#000",
-      secondaryColor: "#4ecdc4",
+      secondaryColor: "#345292",
     },
     token: null,
     user: {

@@ -1,17 +1,18 @@
-/* eslint-disable no-nested-ternary */
-
-import React, { useContext, useEffect } from "react";
-import { Button, Platform } from "react-native";
+import React, { useContext } from "react";
 import Icon from "react-native-vector-icons/MaterialIcons";
 import styled from "styled-components";
 import truncateString from "../../../utils/truncateString";
 
-import { HeaderText } from "./styles";
+import { HeaderText, Container } from "./styles";
+import { ModalContext } from "../../../context/modalContext";
 
 const DrawerContainer = styled.TouchableOpacity``;
 const TitleContainer = styled.View`
   justify-content: center;
   align-items: center;
+  width: 100%;
+  margin-left: -50px;
+  z-index: -1;
 `;
 
 const View = styled.TouchableOpacity`
@@ -32,33 +33,26 @@ const HeaderContainer = styled.View`
   border-bottom-color: grey;
 `;
 
-const MainHeader = ({ title = "Main", navigation }) => {
+const MainHeader = ({ title = "Main" }) => {
+  const modalContext = useContext(ModalContext);
+  const { openDrawer } = modalContext;
+
   return (
-    <HeaderContainer>
-      {/* <DrawerContainer>
-        {session.isLoggedIn ? (
+    <Container>
+      <HeaderContainer>
+        <DrawerContainer>
           <Icon
-            name={'account-circle'}
+            name={"account-circle"}
             size={30}
             color="#666666"
             onPress={() => openDrawer()}
           />
-        ) : (
-          <Button transparent>
-
-            <Icon
-              name={'account-circle'}
-              size={30}
-              color="#666666"
-              onPress={() => openDrawer()}
-            />
-          </Button>
-        )}
-      </DrawerContainer> */}
-      <TitleContainer>
-        <HeaderText title>{truncateString(title)}</HeaderText>
-      </TitleContainer>
-    </HeaderContainer>
+        </DrawerContainer>
+        <TitleContainer>
+          <HeaderText title>{truncateString(title)}</HeaderText>
+        </TitleContainer>
+      </HeaderContainer>
+    </Container>
   );
 };
 

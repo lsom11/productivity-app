@@ -1,15 +1,15 @@
 import { createSwitchNavigator } from "react-navigation";
 import LoginNavigator from "./LoginNavigator";
-import MainNavigator from "./MainNavigator";
+import DrawerNavigator from "./DrawerNavigator";
 
 const createRootNavigator = token =>
   createSwitchNavigator(
     {
+      DrawerNavigator: { screen: DrawerNavigator },
       LoginNavigator: { screen: LoginNavigator },
-      MainNavigator: { screen: MainNavigator },
     },
     {
-      initialRouteName: !token ? "LoginNavigator" : "MainNavigator",
+      initialRouteName: !token ? "LoginNavigator" : "DrawerNavigator",
     },
   );
 

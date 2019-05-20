@@ -15,5 +15,7 @@
   "invalidCredentialsLoginDescription": "Username and/or Password invalid. Please try again.",
   "invalidCredentialsLoginTitle": "Invalid Credentials.",
   "blankCredentialsLoginDescription": "Username and/or Password can't be blank. Please try again.",
-  "blankCredentialsLoginTitle": "Invalid Credentials."
+  "blankCredentialsLoginTitle": "Invalid Credentials.",
+  "hello": "Hello,",
+  "questionsTitle": "Daily Questions"
 }

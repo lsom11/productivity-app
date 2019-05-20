@@ -17,6 +17,11 @@ class ModalProvider extends PureComponent {
         },
       });
     },
+    setDrawerNav: (openDrawer, closeDrawer) =>
+      this.setState({
+        closeDrawer: () => closeDrawer(),
+        openDrawer: () => openDrawer(),
+      }),
     setShowLoading: () =>
       this.setState(prevState => ({ showLoading: !prevState.showLoading })),
     showAlertModal: false,

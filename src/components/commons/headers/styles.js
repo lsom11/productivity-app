@@ -20,5 +20,6 @@ const HeaderText = styled.Text`
   font-size: ${props => (props.title ? "18" : "14")};
   align-self: center;
 `;
+const Container = styled.SafeAreaView``;
 
-export { HeaderContainer, HeaderText };
+export { HeaderContainer, HeaderText, Container };
