@@ -27,9 +27,15 @@ class SessionProvider extends PureComponent {
       );
     },
     theme: {
-      backgroundColor: "#345292",
-      primaryColor: "#000",
-      secondaryColor: "#345292",
+      backgroundColor: "#E5E5E5",
+      buttonBackgroundColor: "#204476",
+      buttonTextColor: "#E5E5E5",
+      disabledBackgroundColor: "#979797",
+      disabledTextColor: "rgba(0, 0, 0, 0.87)",
+      iconColor: "#204476",
+      primaryColor: "#204476",
+
+      secondaryColor: "#979797",
     },
     token: null,
     user: {
@@ -49,7 +55,8 @@ class SessionProvider extends PureComponent {
     const deviceLocale = await DeviceInfo.getDeviceLocale();
     let appText;
     if (deviceLocale === "en" || "en-US") {
-      appText = englishText;
+      appText = portugueseText;
+      // appText = englishText;
     } else {
       appText = portugueseText;
     }

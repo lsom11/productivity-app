@@ -11,29 +11,27 @@ const TitleContainer = styled.View`
   justify-content: center;
   align-items: center;
   width: 100%;
-  margin-left: -50px;
   z-index: -1;
-`;
-
-const View = styled.TouchableOpacity`
-  height: 50px;
-  width: 50px;
-  justify-content: center;
-  align-items: center;
 `;
 
 const HeaderContainer = styled.View`
   height: 50px;
-  padding: 0 2.5%;
+  padding: 0 5%;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
   border-bottom-width: 0.4px;
   border-bottom-color: grey;
 `;
 
-const MainHeader = ({ title = "Main" }) => {
+const MainHeader = ({
+  title = "Main",
+  showIcon = false,
+  iconName = "add",
+  iconAction,
+  iconColor = "#666",
+}) => {
   const modalContext = useContext(ModalContext);
   const { openDrawer } = modalContext;
 
@@ -44,13 +42,23 @@ const MainHeader = ({ title = "Main" }) => {
           <Icon
             name={"account-circle"}
             size={30}
-            color="#666666"
+            color={iconColor}
             onPress={() => openDrawer()}
           />
         </DrawerContainer>
         <TitleContainer>
           <HeaderText title>{truncateString(title)}</HeaderText>
         </TitleContainer>
+        {showIcon && (
+          <DrawerContainer>
+            <Icon
+              name={iconName}
+              size={30}
+              color={iconColor}
+              onPress={() => iconAction()}
+            />
+          </DrawerContainer>
+        )}
       </HeaderContainer>
     </Container>
   );
