@@ -53,7 +53,7 @@ const ForgotPass = props => {
         backText={backText}
         showArrow={true}
         color={primaryColor}
-        navColor={secondaryColor}
+        navColor={primaryColor}
         title="Login"
         navigation={() => goBack()}
       />
@@ -87,10 +87,10 @@ const ForgotPass = props => {
           <Text color="#666666" fontSize={13}>
             {notRegisteredText}{" "}
             <Text
-              color={secondaryColor}
+              color={primaryColor}
               fontSize={13}
               underline
-              underlineColor={secondaryColor}
+              underlineColor={primaryColor}
               onPress={() => navigate("Register")}
             >
               {enterHereText}

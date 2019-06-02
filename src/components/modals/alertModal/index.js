@@ -12,7 +12,7 @@ const AlertModal = props => {
   const sessionContext = useContext(SessionContext);
   const {
     appText: { modalButtonConfirmText },
-    theme: { secondaryColor },
+    theme: { secondaryColor, primaryColor },
   } = sessionContext;
   const {
     toggleAlertModal,
@@ -36,7 +36,7 @@ const AlertModal = props => {
           ) : null}
           {!hideButton && (
             <Button
-              backgroundColor={secondaryColor}
+              backgroundColor={primaryColor}
               marginTop={24}
               title={modalButtonConfirmText}
               submit={() => toggleAlertModal()}

@@ -15,6 +15,8 @@ const TitleContainer = styled.View`
 `;
 
 const HeaderContainer = styled.View`
+  background-color: ${props => props.backgroundColor || "#000"};
+
   height: 50px;
   padding: 0 5%;
   display: flex;
@@ -31,13 +33,14 @@ const MainHeader = ({
   iconName = "add",
   iconAction,
   iconColor = "#666",
+  backgroundColor,
 }) => {
   const modalContext = useContext(ModalContext);
   const { openDrawer } = modalContext;
 
   return (
-    <Container>
-      <HeaderContainer>
+    <Container backgroundColor={backgroundColor}>
+      <HeaderContainer backgroundColor={backgroundColor}>
         <DrawerContainer>
           <Icon
             name={"account-circle"}
@@ -47,7 +50,9 @@ const MainHeader = ({
           />
         </DrawerContainer>
         <TitleContainer>
-          <HeaderText title>{truncateString(title)}</HeaderText>
+          <HeaderText color={iconColor} title>
+            {truncateString(title)}
+          </HeaderText>
         </TitleContainer>
         {showIcon && (
           <DrawerContainer>

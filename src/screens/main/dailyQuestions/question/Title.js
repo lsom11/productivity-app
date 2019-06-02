@@ -29,9 +29,7 @@ const Title = props => {
   }, [question]);
 
   const handleSubmit = () => {
-    console.log(question);
     navigation.navigate("Frequency");
-    console.log("submit!");
   };
 
   return (

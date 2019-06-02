@@ -34,8 +34,8 @@ class SessionProvider extends PureComponent {
       disabledTextColor: "rgba(0, 0, 0, 0.87)",
       iconColor: "#204476",
       primaryColor: "#204476",
-
       secondaryColor: "#979797",
+      whiteColor: "#fff",
     },
     token: null,
     user: {
@@ -55,8 +55,8 @@ class SessionProvider extends PureComponent {
     const deviceLocale = await DeviceInfo.getDeviceLocale();
     let appText;
     if (deviceLocale === "en" || "en-US") {
-      appText = portugueseText;
-      // appText = englishText;
+      // appText = portugueseText;
+      appText = englishText;
     } else {
       appText = portugueseText;
     }
@@ -65,7 +65,6 @@ class SessionProvider extends PureComponent {
 
   checkLogin = async () => {
     const token = await AsyncStorage.getItem("token");
-    console.log(token);
 
     if (token) {
       const user = await userInfo(token);

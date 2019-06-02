@@ -14,9 +14,7 @@ class UserMenu extends PureComponent {
     };
   }
 
-  componentDidMount() {
-    console.log(this.state.routes);
-  }
+  componentDidMount() {}
 
   componentDidUpdate(prevProps, prevState) {
     const { routes } = this.props;
@@ -24,13 +22,10 @@ class UserMenu extends PureComponent {
   }
 
   handleNavigation = async data => {
-    console.log(data);
-
     // navigate("DrawerClose");
   };
 
   renderItem = item => {
-    console.log(item);
     const {
       navigation,
       sessionContext: {

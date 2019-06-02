@@ -14,7 +14,6 @@ const login = async (username, password) => {
   const url = `${API_URL}/login`;
   const response = await fetch(url, fetchOptions);
   const json = await response.json();
-  console.log(json);
   if (response.status > 299) {
     throw json;
   }
@@ -37,10 +36,9 @@ const register = async (email, username, password) => {
 
   const url = `${API_URL}/register`;
   const response = await fetch(url, fetchOptions);
-  console.log(response, "here");
   const json = await response.json();
   if (response.status > 299) {
-    throw json;
+    return response;
   }
   return json;
 };

@@ -1,8 +1,11 @@
 {
+  "observation": "Observation: ",
   "passwordInput": "Password",
   "usernameInput": "Email or Username",
   "submitText": "Submit",
   "confirmText": "Confirm",
+  "prompt": "Did I do my best today to...",
+  "selectDateText": "Choose a date",
   "addFrequencyTitle": "Choose the frequency",
   "addFrequencyParagraph": "Choose how many times per week you want to reflect on your goal",
   "addCategoryTitle": "Choose a category",

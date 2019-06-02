@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import React, { useState } from "react";
 // import { TouchableOpacity } from "react-native";
 
@@ -19,9 +21,9 @@ import { register } from "../../fetch/auth";
 import { userInfo } from "../../fetch/user";
 
 const Register = props => {
-  const [user, setUser] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [user, setUser] = useState("lsom11");
+  const [email, setEmail] = useState("lucwsomers@gmail.com");
+  const [password, setPassword] = useState("123456");
   const { sessionContext, modalContext, navigation } = props;
   const { goBack, navigate } = navigation;
   const { setShowLoading, toggleAlertModal, setAlertText } = modalContext;
@@ -81,7 +83,7 @@ const Register = props => {
         backText={cancelText}
         title="Register"
         color={primaryColor}
-        navColor={secondaryColor}
+        navColor={primaryColor}
         navigation={() => goBack()}
         style={{ marginBottom: 20 }}
       />
@@ -121,7 +123,7 @@ const Register = props => {
         </InputContainer>
 
         <SubmitButton
-          backgroundColor={secondaryColor}
+          backgroundColor={primaryColor}
           submit={validateBeforeSubmit}
           title={submitText}
         />
@@ -130,7 +132,7 @@ const Register = props => {
           <Text fontSize={13}>
             {alreadyRegisteredText}{" "}
             <Text
-              color={secondaryColor}
+              color={primaryColor}
               fontSize={13}
               onPress={() => navigate("Login")}
             >

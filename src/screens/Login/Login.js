@@ -77,7 +77,7 @@ const Login = props => {
         backText={cancelText}
         title="Login"
         color={primaryColor}
-        navColor={secondaryColor}
+        navColor={primaryColor}
         navigation={() => navigate("Register")}
         style={{ marginBottom: 20 }}
       />
@@ -108,7 +108,7 @@ const Login = props => {
           />
         </InputContainer>
         <SubmitButton
-          backgroundColor={secondaryColor}
+          backgroundColor={primaryColor}
           submit={validateBeforeSubmit}
           title={submitText}
         />
@@ -117,7 +117,7 @@ const Login = props => {
           <Text>
             {notRegisteredText}{" "}
             <Text
-              color={secondaryColor}
+              color={primaryColor}
               fontSize={"13px"}
               onPress={() => navigate("Register")}
             >

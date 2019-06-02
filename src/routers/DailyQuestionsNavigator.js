@@ -16,7 +16,7 @@ const dailyQuestionsNavigator = createStackNavigator(
   },
   {
     headerMode: "none",
-    initialRouteName: "Title",
+    initialRouteName: "QuestionsList",
 
     transitionConfig: () => ({
       transitionSpec: {
